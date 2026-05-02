@@ -1,0 +1,14 @@
+GET http://localhost:8099/version
+
+###
+GET http://localhost:8099/actuator/metrics
+
+###
+###
+POST http://localhost:8099/rest/v1/docs?conversationId=cc6d3e87-120d-413c-af03-7c36ade26767
+Content-Type: application/json
+
+{
+  "questionId": 950,
+  "question": "What ways can be used to deploy Lambda into AWS cloud?"
+}

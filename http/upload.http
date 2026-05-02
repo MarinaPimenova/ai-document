@@ -1,0 +1,25 @@
+### Send a form with the text and file fields
+POST http://localhost:8099/api/v1/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="chart-stock-performance.png"
+Content-Type: image/png
+
+< ./chart-stock-performance.png
+--WebAppBoundary--
+
+### [
+
+### Send a form with the text and file fields
+POST http://localhost:8099/api/v1/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="microservices-on-aws.pdf"
+Content-Type: application/pdf
+
+< ./microservices-on-aws.pdf
+--WebAppBoundary--
+
+###

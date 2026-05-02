@@ -1,0 +1,81 @@
+#
+server:
+  servlet:
+    context-path: /
+    session:
+      timeout: 3600 # in seconds, so 60 min  # If a duration suffix is not specified, seconds will be used.
+  compression:
+    min-response-size: 1024
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+    enabled: true
+  port: 8099
+
+info:
+  app:
+    name: ai-document
+    version: '@project.version@'
+http:
+  client:
+    connect-timeout: ${HTTP_CLIENT_CONNECT_TIMEOUT:5000}
+    read-timeout: ${HTTP_CLIENT_READ_TIMEOUT:120000}
+
+logging:
+  level:
+    com.training.app: debug
+    org.springframework: info
+    org:
+      hibernate: info
+      springframework:
+        web:
+          servlet:
+            DispatcherServlet: DEBUG
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+      resolve-lazily: false
+      enabled: true
+  ai:
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimensions: 1024 # 768 for postgresMl
+        initialize-schema: false
+        schema-name: public
+        table-name: vector_store
+        max-document-batch-size: 10000
+    mistralai:
+      api-key: ${MISTRAL_AI_API_KEY}
+    openai:
+      api-key: ${OPEN_AI_API_KEY}
+      base-url: ${OPEN_AI_ENDPOINT:https://ai-proxy.lab.epam.com}
+      chat:
+        completions-path: "${OPEN_AI_COMPLETIONS_PATH:/openai/deployments/gpt-4.1-mini-2025-04-14/chat/completions}"
+        model: "${CHAT_MODEL:gpt-4.1-mini-2025-04-14}" # gpt-4-turbo
+        base-url: ${OPEN_AI_ENDPOINT:https://ai-proxy.lab.epam.com}
+        embeddings-path: /openai/deployments/text-embedding-ada-002/embeddings
+
+openai:
+  image-model: "${IMAGE_MODEL:anthropic.claude-v3-haiku}" #gpt-4-vision-preview
+  image-completions-path: "${IMAGE_AI_COMPLETIONS_PATH:/openai/deployments/anthropic.claude-v3-haiku/chat/completions}"
+
+datasource:
+  pgvector:
+    jdbcUrl: "${PGVECTOR_URL:jdbc:postgresql://localhost:5434/embd}" #?stringtype=unspecified # 5433
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
+    driverClassName: org.postgresql.Driver
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
