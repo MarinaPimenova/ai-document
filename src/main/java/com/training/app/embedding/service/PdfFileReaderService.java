@@ -1,6 +1,6 @@
-package com.training.app.embadding.service;
+package com.training.app.embedding.service;
 
-import com.training.app.embadding.store.VectorStoreService;
+import com.training.app.embedding.store.VectorStoreService;
 import com.training.app.exception.StorageException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.document.Document;
@@ -59,7 +59,6 @@ public class PdfFileReaderService {
     }
 
     public List<Document> getResources(String query) {
-
         return vectorStoreService.similaritySearch(query);
     }
 }

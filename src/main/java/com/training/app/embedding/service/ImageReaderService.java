@@ -1,7 +1,7 @@
-package com.training.app.embadding.service;
+package com.training.app.embedding.service;
 
 import com.training.app.ai.config.anthropicai.OpenAiVisionClient;
-import com.training.app.embadding.store.VectorStoreService;
+import com.training.app.embedding.store.VectorStoreService;
 import com.training.app.exception.StorageException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,7 +1,7 @@
-package com.training.app.embadding.web;
+package com.training.app.embedding.web;
 
-import com.training.app.embadding.service.ImageReaderService;
-import com.training.app.embadding.store.VectorStoreService;
+import com.training.app.embedding.service.ImageReaderService;
+import com.training.app.embedding.store.VectorStoreService;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.ai.chat.client.ChatClient;
@@ -16,8 +16,6 @@ import java.util.List;
 @Service
 public class WebPageReaderService {
 
-    private final VectorStore vectorStore;
-
     private final ImageReaderService imageReaderService;
     private final VectorStoreService vectorStoreService;
     private final HtmlTableExtractorService htmlTableExtractorService;
@@ -25,8 +23,13 @@ public class WebPageReaderService {
     private final QuestionAnswerAdvisor questionAnswerAdvisor;
     private final SimpleLoggerAdvisor simpleLoggerAdvisor;
 
-    public WebPageReaderService(VectorStore vectorStore, ImageReaderService imageReaderService, VectorStoreService vectorStoreService, HtmlTableExtractorService htmlTableExtractorService, ChatClient chatTableClient) {
-        this.vectorStore = vectorStore;
+    public WebPageReaderService(
+            VectorStore vectorStore,
+            ImageReaderService imageReaderService,
+            VectorStoreService vectorStoreService,
+            HtmlTableExtractorService htmlTableExtractorService,
+            ChatClient chatTableClient) {
+
         this.imageReaderService = imageReaderService;
         this.vectorStoreService = vectorStoreService;
         this.htmlTableExtractorService = htmlTableExtractorService;

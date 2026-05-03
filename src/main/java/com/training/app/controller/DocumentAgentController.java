@@ -3,7 +3,7 @@ package com.training.app.controller;
 import com.training.app.api.DeferredResultService;
 import com.training.app.api.dto.AgentPayload;
 import com.training.app.api.dto.DocumentAgentResponse;
-import com.training.app.embadding.service.DataLoaderService;
+import com.training.app.embedding.service.DataLoaderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;

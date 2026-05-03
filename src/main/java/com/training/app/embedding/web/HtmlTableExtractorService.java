@@ -1,4 +1,4 @@
-package com.training.app.embadding.web;
+package com.training.app.embedding.web;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

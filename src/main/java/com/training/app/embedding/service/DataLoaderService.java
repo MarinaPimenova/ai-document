@@ -1,6 +1,6 @@
-package com.training.app.embadding.service;
+package com.training.app.embedding.service;
 
-import com.training.app.embadding.web.WebPageReaderService;
+import com.training.app.embedding.web.WebPageReaderService;
 import com.training.app.exception.UnsupportedFileType;
 import com.training.app.util.FileValidationUtil;
 import lombok.RequiredArgsConstructor;

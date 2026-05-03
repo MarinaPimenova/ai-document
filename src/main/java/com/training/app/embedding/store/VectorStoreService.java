@@ -1,4 +1,4 @@
-package com.training.app.embadding.store;
+package com.training.app.embedding.store;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.document.Document;

@@ -1,4 +1,4 @@
-package com.training.app.embadding.config;
+package com.training.app.embedding.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.embedding.EmbeddingModel;
@@ -13,7 +13,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 
-@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Configuration
 @RequiredArgsConstructor
 public class VectorStoreConfig {
@@ -34,7 +33,7 @@ public class VectorStoreConfig {
     @Bean
     public VectorStore vectorStore(
             @Qualifier("pgvectorJdbcTemplate") JdbcTemplate jdbcTemplate,
-                                   EmbeddingModel embeddingModel) {
+            EmbeddingModel embeddingModel) {
         return PgVectorStore.builder(jdbcTemplate, embeddingModel)
                 .dimensions(pgvectorConfig.getDimensions())                    // Optional: defaults to model dimensions or 1536
                 .distanceType(PgVectorStore.PgDistanceType.valueOf(pgvectorConfig.getDistanceType()))       // Optional: defaults to COSINE_DISTANCE

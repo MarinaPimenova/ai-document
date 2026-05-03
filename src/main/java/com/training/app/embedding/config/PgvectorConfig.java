@@ -1,4 +1,4 @@
-package com.training.app.embadding.config;
+package com.training.app.embedding.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
