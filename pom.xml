@@ -81,10 +81,6 @@
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-pgvector-store</artifactId>
         </dependency>
-<!--        <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-postgresml</artifactId>
-        </dependency>-->
 
         <!--File Upload-->
         <dependency>
