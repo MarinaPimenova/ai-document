@@ -1,19 +1,21 @@
 package com.training.app.controller;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.training.app.api.healthcheck.VersionService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
-@RequestMapping("/version")
+@RequiredArgsConstructor
 public class VersionController {
 
-    @GetMapping(produces = MediaType.TEXT_PLAIN_VALUE)
-    public String getVersion(
-            @Value("${info.app.name}") String appName,
-            @Value("${info.app.version}") String version) {
-        return appName + " : " + version;
+    private final VersionService versionService;
+
+    @GetMapping(value = "/rest/v1/version", produces = MediaType.TEXT_PLAIN_VALUE)
+    public String getVersion() {
+        return versionService.getVersion();
     }
 }
