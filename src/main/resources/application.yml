@@ -1,5 +1,8 @@
 #
 server:
+  error:
+    whitelabel:
+      enabled: false
   servlet:
     context-path: /
     session:
@@ -71,6 +74,16 @@ datasource:
     password: ${POSTGRES_PASSWORD:postgres}
     driverClassName: org.postgresql.Driver
 
+ms:
+  cors:
+    allowed-origins: "${SWAGGER_ALLOWED_ORIGINS:http://localhost:8091,http://localhost:5173,http://localhost:8080}"
+
+springdoc:
+  api-docs:
+    path: /rest/v1/v3/api-docs
+  swagger-ui:
+    path: /rest/v1/swagger-ui.html
+
 management:
   endpoints:
     web:
@@ -78,4 +91,4 @@ management:
         include: '*'
   endpoint:
     health:
-      show-details: always
+      show-details: never
